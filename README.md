@@ -1,4 +1,4 @@
-# Project: - "End-to-End Automation of Java Application Deployment, Build, and Testing Using Jenkins Pipeline"
+# Project: - "Automated CI/CD Pipeline for java web application to deploy on kubernetes cluster."
 
 ## **Tools and software’s:-** AWS, Jenkins, Ansible, Docker, Kubernetes, Git, Github.
 
@@ -48,22 +48,24 @@ https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
    •	ssh-keygen  
    •	ssh-id-copy ubuntu@Private_IP_of_Ansible-Controller.  
    •	ssh-id-copy ec2-user@Private_IP_of_kops_master-machine.
+  	
+6. Create a kubernetes cluster having one master and two node machines in AWS.
 
 ## **Completed password-less ssh connections we created:-**
 
 ![image](https://github.com/Shahrukhislam786/webapp-project/assets/120633106/a3ee38ad-a1cd-4fd4-bbbf-c50b337b70e3)
 
-5.	Create a playbook in ansible controller to install pip, docker-py and docker in QA servers.  
+7.	Create a playbook in ansible controller to install pip, docker-py and docker in QA servers.  
    •	Connect to Ansible controller.  
    •	Create a playbook called install_s/w’s.yml file to install required s/w’s in QA Servers.  
    •	Create a playbook called deployment_QA.yml file to run the docker image we are going to create in QA Servers.  
 
-6.	Create deployment and service manifest files in kubernetes master machine to deploy the application in  production environment i.e. Node 1 & 2.  
+8.	Create deployment and service manifest files in kubernetes master machine to deploy the application in  production environment i.e. Node 1 & 2.  
    •	Connect to Kubernetes master machine.  
    •	Create a deployment definition file called myapp-deployment.yml   
    •	Create a service definition file called myapp-service.yml  
 
-7.	Create a pipeline script in Jenkins Server to run all the processes automatically.  
+9.	Create a pipeline script in Jenkins Server to run all the processes automatically.  
    •	Connect to Jenkins Server.  
    •	Create a user ID, Password and install suggested plugins.  
    •	Create a pipeline job called myapp.  
@@ -73,15 +75,15 @@ https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
 
 ![image](https://github.com/Shahrukhislam786/webapp-project/assets/120633106/a24b1df8-4cb2-42a2-a4dc-eb62a4a8aa9d)
 
-8. Create two playbooks in Ansible Controller  
+10. Create two playbooks in Ansible Controller  
    •	pip&docker_setup.yml - (Run it to install the dependencies)  
    •	testing_artifact.yml - (We will run it from Jenkins Pipeline)
 
-9. 	Create two kubernetes menifest files in Kubernetes master machine.    
+11. 	Create two kubernetes menifest files in Kubernetes master machine.    
    •	myapp-deployment.yml - (We will run it from Jenkins Pipeline)  
    •	myapp-service.yml - (We will run it from Jenkins Pipeline)
    
-11. 	Create  a jenkins pipeline job called java-app and use the contents of jenkins-pipeline in it.
+13. 	Create  a jenkins pipeline job called java-app and use the contents of jenkins-pipeline in it.
     
-12. 	Build the job.  
+14. 	Build the job.  
    
