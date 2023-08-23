@@ -45,7 +45,7 @@ EOF'''
         {
             steps
             {
-                sh 'ssh ubuntu@PUBLIC_IP_OF_ANSIBLE_CONTROLLER ansible-playbook playbook2.yml -b'
+                sh 'ssh ubuntu@PUBLIC_IP_OF_ANSIBLE_CONTROLLER ansible-playbook testing_artifact.yml -b'
             }
         }
         stage("Testing the app using testing script")
