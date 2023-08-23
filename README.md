@@ -75,15 +75,16 @@ https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
 
 ![image](https://github.com/Shahrukhislam786/webapp-project/assets/120633106/a24b1df8-4cb2-42a2-a4dc-eb62a4a8aa9d)
 
-10. Create two playbooks in Ansible Controller  
-   •	pip&docker_setup.yml - (Run it to install the dependencies)  
-   •	testing_artifact.yml - (We will run it from Jenkins Pipeline)
+10. Create two playbooks in Ansible Controller.  
+    •  pip&docker_setup.yml - (Run it to install the dependencies)  
+    •	 testing_artifact.yml - (We will run it from Jenkins Pipeline)  
 
-11. 	Create two kubernetes menifest files in Kubernetes master machine.    
-   •	myapp-deployment.yml - (We will run it from Jenkins Pipeline)  
-   •	myapp-service.yml - (We will run it from Jenkins Pipeline)
-   
-13. 	Create  a jenkins pipeline job called java-app and use the contents of jenkins-pipeline in it.
-    
-14. 	Build the job.  
+11. Create two kubernetes menifest files in Kubernetes master machine.  
+    •	 myapp-deployment.yml - (We will run it from Jenkins Pipeline)  
+    •  myapp-service.yml - (We will run it from Jenkins Pipeline)  
+
+12. Create  a jenkins pipeline job called java-app and use the contents of jenkins-pipeline in it.  
+
+13. Build the job.  
+
    
