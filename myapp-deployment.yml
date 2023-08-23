@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployyment
+metadata:
+  name: myyapp-deployyment
+  labels:
+    author: shahrukh
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: appserver
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        type: appserver
+    spec:
+      containers:
+        - name: java-app
+          image: shahrukhislam786/java-app
+...
