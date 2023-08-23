@@ -1,8 +1,8 @@
 # Project: - "End-to-End Automation of Java Application Deployment, Build, and Testing Using Jenkins Pipeline"
 
-**Tools and software’s:-** AWS, Jenkins, Ansible, Docker, Kubernetes, Git, Github.
+## **Tools and software’s:-** AWS, Jenkins, Ansible, Docker, Kubernetes, Git, Github.
 
-**Pre-requisites:-** 
+## **Pre-requisites:-** 
 
 1.	Create two ubuntu instances for testing purpose.  
    •	Create two t2.micro 8GB EC2 instance called QA-1 and QA-2.  
@@ -49,7 +49,7 @@ https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
    •	ssh-id-copy ubuntu@Private_IP_of_Ansible-Controller.  
    •	ssh-id-copy ec2-user@Private_IP_of_kops_master-machine.
 
-**Completed password-less ssh connections we created:-**
+## **Completed password-less ssh connections we created:-**
 
 ![image](https://github.com/Shahrukhislam786/webapp-project/assets/120633106/a3ee38ad-a1cd-4fd4-bbbf-c50b337b70e3)
 
@@ -69,8 +69,19 @@ https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
    •	Create a pipeline job called myapp.  
    •	Copy the contents of jenkins-pipeline in java-app job’s pipeline.  
 
-  	**Complete architecture we are going to created :-  **
+## **Complete architecture we are going to created :-**
 
 ![image](https://github.com/Shahrukhislam786/webapp-project/assets/120633106/a24b1df8-4cb2-42a2-a4dc-eb62a4a8aa9d)
 
-	
+8. Create two playbooks in Ansible Controller  
+   •	pip&docker_setup.yml - (Run it to install the dependencies)  
+   •	testing_artifact.yml - (We will run it from Jenkins Pipeline)
+
+9. 	Create two kubernetes menifest files in Kubernetes master machine.    
+   •	myapp-deployment.yml - (We will run it from Jenkins Pipeline)  
+   •	myapp-service.yml - (We will run it from Jenkins Pipeline)
+   
+11. 	Create  a jenkins pipeline job called java-app and use the contents of jenkins-pipeline in it.
+    
+12. 	Build the job.  
+   
