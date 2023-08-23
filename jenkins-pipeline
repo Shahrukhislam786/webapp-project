@@ -1,0 +1,68 @@
+pipeline
+{
+    agent any
+    stages
+    {
+        stage("Code Download")
+        {
+            steps
+            {
+                git 'https://github.com/Shahrukhislam786/maven.git'
+            }
+        }
+        stage("Code Build")
+        {
+            steps
+            {
+                sh 'mvn package'
+            }
+        }
+        stage("Create dockerfile")
+        {
+            steps
+            {
+                sh '''cat>dockerfile<<EOF
+FROM tomee
+COPY /webapp/target/webapp.war /usr/local/tomee/webapps/testapp.war
+EOF'''
+            }
+        }
+        stage("Create Docker Image")
+        {
+            steps
+            {
+                sh 'sudo docker build -t shahrukhislam786/java-app .'
+            }
+        }
+        stage("Push image to docker registry")
+        {
+            steps
+            {
+                sh 'sudo docker push shahrukhislam786/java-app'
+            }
+        }
+        stage("Run ansible playbook to deploy in QA server")
+        {
+            steps
+            {
+                sh 'ssh ubuntu@PUBLIC_IP_OF_ANSIBLE_CONTROLLER ansible-playbook playbook2.yml -b'
+            }
+        }
+        stage("Testing the app using testing script")
+        {
+            steps
+            {
+                git 'https://github.com/Shahrukhislam786/FunctionalTesting.git'
+                sh 'java -jar /var/lib/jenkins/workspace/java-app/testing.jar'
+            }
+        }
+        stage("Deploy java-app to production servers")
+        {
+            steps
+            {
+                sh 'ssh ubuntu@PUBLIC_IP_OF_K8S_MASTER kubectl apply -f myapp-deployment.yml'
+                sh 'ssh ubuntu@PUBLIC_IP_OF_K8S_MASTER kubectl apply -f myapp-service.yml'
+            }
+        }
+    }
+}
