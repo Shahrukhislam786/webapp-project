@@ -1,0 +1,12 @@
+---
+- name: Create container using customized image in testing servers
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create container
+      docker_container:
+        name: test-app
+        image: shahrukhislam786/java-app
+        ports:
+          - 9000:8080
+...
